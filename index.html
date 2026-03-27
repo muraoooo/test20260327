@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIRAICHI | 学びが生きがいに、成長が未来に</title>
+  <meta name="description" content="MIRAICHIは、AIを活用して仕事と人生をもっと面白くする実践型コミュニティです。年間100本以上のセミナー、累計12,000人以上が参加。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+
+    /* ═══════════════════════════════════
+       RESET & VARIABLES
+    ═══════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:        #ffffff;
+      --cream:        #faf8f4;
+      --cream-deep:   #f3ede3;
+      --beige:        #ede5d7;
+      --gold:         #c8943a;
+      --gold-light:   #e0b060;
+      --gold-pale:    #f7edda;
+      --gold-dark:    #a07428;
+      --navy:         #1a2840;
+      --navy-mid:     #253550;
+      --navy-light:   #344565;
+      --teal:         #2a7a78;
+      --teal-light:   #3d9e9b;
+      --gray-dark:    #4b5563;
+      --gray:         #6b7280;
+      --gray-light:   #9ca3af;
+      --border:       #e4ddd0;
+
+      --font-sans:    'Noto Sans JP', sans-serif;
+      --font-serif:   'Noto Serif JP', serif;
+      --max-w:        1140px;
+      --gutter:       clamp(20px, 5vw, 80px);
+
+      --r-sm: 6px; --r-md: 12px; --r-lg: 20px; --r-xl: 32px;
+      --sh-sm: 0 2px 8px rgba(0,0,0,.06);
+      --sh-md: 0 8px 28px rgba(0,0,0,.09);
+      --sh-lg: 0 20px 56px rgba(0,0,0,.12);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      background: var(--white);
+      color: var(--navy);
+      line-height: 1.75;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ═══════════════════════════════════
+       UTILITIES
+    ═══════════════════════════════════ */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter); }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 500; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+    }
+    .eyebrow::before, .eyebrow::after {
+      content: ''; display: block; width: 24px; height: 1px; background: var(--gold);
+    }
+    .eyebrow.left::after { display: none; }
+    .eyebrow.left::before { display: none; }
+    .eyebrow.left { padding-left: 0; }
+    .eyebrow.left-line::before { display: block; }
+    .eyebrow.left-line::after { display: none; }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--navy);
+    }
+    .section-lead {
+      font-size: 14px; color: var(--gray); line-height: 2;
+      margin-top: 16px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 30px; border-radius: 40px;
+      font-size: 14px; font-weight: 500; letter-spacing: .04em;
+      cursor: pointer; transition: all .25s; border: none; white-space: nowrap;
+    }
+    .btn-gold {
+      background: var(--gold); color: var(--white);
+    }
+    .btn-gold:hover { background: var(--gold-dark); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(200,148,58,.35); }
+    .btn-navy {
+      background: var(--navy); color: var(--white);
+    }
+    .btn-navy:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(26,40,64,.3); }
+    .btn-outline {
+      background: transparent; color: var(--navy); border: 1.5px solid var(--navy);
+    }
+    .btn-outline:hover { background: var(--navy); color: var(--white); }
+    .btn-outline-gold {
+      background: transparent; color: var(--gold); border: 1.5px solid var(--gold);
+    }
+    .btn-outline-gold:hover { background: var(--gold); color: var(--white); }
+    .btn-white {
+      background: var(--white); color: var(--navy); font-weight: 700;
+    }
+    .btn-white:hover { background: var(--cream); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,0,0,.2); }
+    .btn-ghost {
+      background: rgba(255,255,255,.12); color: var(--white);
+      border: 1px solid rgba(255,255,255,.25);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.2); }
+    .btn svg { width: 16px; height: 16px; }
+
+    /* ═══════════════════════════════════
+       HEADER
+    ═══════════════════════════════════ */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(250,248,244,.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow .3s;
+    }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px; max-width: var(--max-w); margin: 0 auto; padding: 0 var(--gutter);
+    }
+    .logo {
+      display: flex; align-items: center; gap: 12px; flex-shrink: 0;
+    }
+    .logo-mark {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      display: grid; place-items: center; flex-shrink: 0;
+    }
+    .logo-mark span { font-size: 16px; }
+    .logo-name {
+      font-family: var(--font-serif); font-size: 18px; font-weight: 700;
+      letter-spacing: .05em; color: var(--navy);
+    }
+    .logo-tagline { font-size: 10px; color: var(--gray-light); letter-spacing: .06em; margin-top: 1px; }
+
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; color: var(--gray-dark); letter-spacing: .04em;
+      position: relative; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1.5px; background: var(--gold); transform: scaleX(0); transition: transform .25s;
+    }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta { display: flex; align-items: center; gap: 10px; }
+
+    /* ═══════════════════════════════════
+       HERO
+    ═══════════════════════════════════ */
+    .hero {
+      padding-top: 70px;
+      min-height: 100svh;
+      background: var(--cream);
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+    }
+
+    /* Geometric background */
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,148,58,.12) 0%, transparent 65%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -100px; left: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,40,64,.05) 0%, transparent 70%);
+    }
+
+    /* Dot grid */
+    .hero-dots {
+      position: absolute; top: 80px; right: 60px;
+      width: 220px; height: 220px;
+      background-image: radial-gradient(circle, rgba(200,148,58,.3) 1.5px, transparent 1.5px);
+      background-size: 22px 22px;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px); align-items: center;
+      position: relative; z-index: 1;
+      padding: clamp(60px, 8vw, 100px) 0;
+    }
+
+    /* Floating badge */
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--white); border: 1px solid var(--beige);
+      border-radius: 40px; padding: 7px 18px 7px 10px;
+      box-shadow: var(--sh-sm); margin-bottom: 28px;
+    }
+    .hero-kicker-icon {
+      width: 28px; height: 28px; background: var(--gold-pale);
+      border-radius: 50%; display: grid; place-items: center; font-size: 14px;
+    }
+    .hero-kicker span { font-size: 12px; font-weight: 500; color: var(--gray-dark); }
+    .hero-kicker-dot {
+      width: 6px; height: 6px; background: #22c55e;
+      border-radius: 50%; margin-left: auto;
+      box-shadow: 0 0 0 3px rgba(34,197,94,.2);
+      animation: blink 2s infinite;
+    }
+    @keyframes blink {
+      0%,100% { opacity:1 } 50% { opacity:.4 }
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 700; line-height: 1.3;
+      color: var(--navy); margin-bottom: 10px;
+    }
+    .hero-title .accent { color: var(--gold); }
+    .hero-title .line2 { font-size: clamp(20px, 3.2vw, 38px); display: block; margin-top: 6px; }
+
+    .hero-mission {
+      display: inline-block;
+      font-size: 13px; letter-spacing: .12em;
+      color: var(--gray); margin-bottom: 20px;
+      padding: 10px 18px; background: var(--white);
+      border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0;
+    }
+
+    .hero-lead {
+      font-size: 15px; color: var(--gray-dark); line-height: 2; margin-bottom: 36px;
+    }
+
+    .hero-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+
+    /* Stats strip */
+    .hero-stats {
+      display: flex; gap: 28px; margin-top: 44px; padding-top: 36px;
+      border-top: 1px solid var(--border); flex-wrap: wrap;
+    }
+    .hero-stat {}
+    .hero-stat-num {
+      font-family: var(--font-serif); font-size: 34px; font-weight: 700;
+      color: var(--navy); line-height: 1;
+    }
+    .hero-stat-num sup { font-size: 16px; color: var(--gold); vertical-align: super; }
+    .hero-stat-label { font-size: 11px; color: var(--gray-light); letter-spacing: .06em; margin-top: 6px; }
+
+    /* Visual side */
+    .hero-visual {
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Card stack illustration */
+    .hero-card-stack {
+      position: relative; width: 100%; max-width: 440px;
+    }
+    .hero-card-bg {
+      width: 100%; aspect-ratio: 3/4;
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: 24px; position: relative; overflow: hidden;
+      box-shadow: var(--sh-lg);
+    }
+    .hero-card-bg::before {
+      content: '';
+      position: absolute; top: -80px; right: -80px;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: rgba(200,148,58,.15);
+    }
+    .hero-card-bg::after {
+      content: '';
+      position: absolute; bottom: -60px; left: -60px;
+      width: 250px; height: 250px; border-radius: 50%;
+      background: rgba(200,148,58,.08);
+    }
+
+    /* Inner card content */
+    .hc-inner {
+      position: absolute; inset: 0; padding: 36px 32px;
+      display: flex; flex-direction: column;
+      z-index: 1;
+    }
+
+    .hc-logo { margin-bottom: 28px; }
+    .hc-logo-text {
+      font-family: var(--font-serif); font-size: 22px; font-weight: 700;
+      color: var(--white); letter-spacing: .08em;
+    }
+    .hc-logo-sub { font-size: 10px; color: rgba(255,255,255,.45); letter-spacing: .1em; margin-top: 3px; }
+
+    .hc-main { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+
+    .hc-stat-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px; padding: 18px 20px;
+      transition: all .3s;
+    }
+    .hc-stat-label { font-size: 10px; color: rgba(255,255,255,.45); letter-spacing: .08em; margin-bottom: 6px; }
+    .hc-stat-val { font-family: var(--font-serif); font-size: 28px; font-weight: 700; color: var(--white); }
+    .hc-stat-val span { font-size: 13px; color: var(--gold-light); }
+    .hc-stat-bar { margin-top: 10px; height: 4px; background: rgba(255,255,255,.1); border-radius: 2px; }
+    .hc-stat-fill { height: 100%; background: var(--gold); border-radius: 2px; }
+
+    .hc-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+    .hc-tag {
+      display: inline-block; padding: 5px 12px; border-radius: 20px;
+      font-size: 11px; font-weight: 500;
+    }
+    .hc-tag.gold { background: rgba(200,148,58,.2); color: var(--gold-light); }
+    .hc-tag.teal { background: rgba(42,122,120,.3); color: #6dd8d5; }
+    .hc-tag.white { background: rgba(255,255,255,.1); color: rgba(255,255,255,.6); }
+
+    .hc-cta {
+      margin-top: auto;
+      background: var(--gold);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .hc-cta-text { font-size: 13px; font-weight: 600; color: var(--white); }
+    .hc-cta-arrow {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,.2); display: grid; place-items: center;
+      font-size: 14px; color: var(--white);
+    }
+
+    /* Floating pills around card */
+    .hero-pill {
+      position: absolute;
+      background: var(--white); border-radius: 40px;
+      padding: 8px 16px 8px 10px;
+      box-shadow: var(--sh-md); display: flex; align-items: center; gap: 8px;
+      font-size: 12px; font-weight: 500; color: var(--navy);
+      animation: float 5s ease-in-out infinite;
+      white-space: nowrap;
+    }
+    .hero-pill-icon { font-size: 18px; }
+    .hero-pill:nth-child(odd) { animation-direction: alternate-reverse; }
+    @keyframes float { 0%{transform:translateY(0)} 100%{transform:translateY(-12px)} }
+
+    .pill-1 { top: 6%; left: -8%; animation-duration: 4s; }
+    .pill-2 { top: 38%; right: -10%; animation-duration: 5.5s; }
+    .pill-3 { bottom: 10%; left: -5%; animation-duration: 3.8s; animation-delay: -.5s; }
+
+    /* ═══════════════════════════════════
+       LOGO BAR
+    ═══════════════════════════════════ */
+    .trust-bar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .trust-bar-inner {
+      display: flex; align-items: center; gap: 40px; flex-wrap: wrap; justify-content: center;
+    }
+    .trust-bar-label { font-size: 11px; color: var(--gray-light); letter-spacing: .08em; }
+    .trust-platform {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; color: var(--gray-dark);
+    }
+    .trust-platform-icon {
+      width: 30px; height: 30px; border-radius: 6px;
+      display: grid; place-items: center; font-size: 16px;
+    }
+
+    /* ═══════════════════════════════════
+       WHAT IS MIRAICHI
+    ═══════════════════════════════════ */
+    .about {
+      padding: clamp(80px, 10vw, 130px) 0;
+      background: var(--white);
+    }
+
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: clamp(48px, 7vw, 110px); align-items: center;
+    }
+
+    /* Left text */
+    .about-copy { font-size: 15px; color: var(--gray-dark); line-height: 2.1; margin-top: 24px; }
+
+    .about-values { margin-top: 40px; display: flex; flex-direction: column; gap: 20px; }
+    .about-val {
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .about-val-icon {
+      width: 48px; height: 48px; flex-shrink: 0; border-radius: 12px;
+      background: var(--gold-pale); display: grid; place-items: center; font-size: 22px;
+      transition: background .3s;
+    }
+    .about-val:hover .about-val-icon { background: var(--beige); }
+    .about-val-body {}
+    .about-val-title { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 4px; }
+    .about-val-text { font-size: 13px; color: var(--gray); line-height: 1.8; }
+
+    .about-cta { margin-top: 36px; }
+
+    /* Right: Stats visual */
+    .about-visual {}
+    .about-big-stats {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .abs-card {
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 28px 24px;
+      transition: all .3s;
+    }
+    .abs-card:hover { transform: translateY(-4px); box-shadow: var(--sh-md); }
+    .abs-card.dark {
+      background: var(--navy); border-color: var(--navy);
+    }
+    .abs-card.gold-card {
+      background: var(--gold); border-color: var(--gold);
+    }
+    .abs-card.span2 { grid-column: 1 / -1; }
+
+    .abs-num {
+      font-family: var(--font-serif); font-size: 40px; font-weight: 700;
+      color: var(--navy); line-height: 1;
+    }
+    .abs-num span { font-size: 18px; color: var(--gold); }
+    .abs-card.dark .abs-num { color: var(--white); }
+    .abs-card.dark .abs-num span { color: var(--gold-light); }
+    .abs-card.gold-card .abs-num { color: var(--white); }
+    .abs-card.gold-card .abs-num span { color: rgba(255,255,255,.7); }
+    .abs-label {
+      font-size: 12px; color: var(--gray); margin-top: 8px; letter-spacing: .04em;
+    }
+    .abs-card.dark .abs-label { color: rgba(255,255,255,.5); }
+    .abs-card.gold-card .abs-label { color: rgba(255,255,255,.75); }
+
+    .abs-card.span2 .abs-num { font-size: 50px; }
+
+    /* ═══════════════════════════════════
+       SEMINARS
+    ═══════════════════════════════════ */
+    .seminars {
+      padding: clamp(80px, 10vw, 130px) 0;
+      background: var(--cream);
+    }
+
+    .seminars-head {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; align-items: end; margin-bottom: 56px;
+    }
+    .seminars-head .eyebrow { justify-content: flex-start; }
+    .seminars-head .eyebrow::before { display: block; }
+    .seminars-head .eyebrow::after { display: none; }
+
+    .seminars-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+
+    .sem-card {
+      background: var(--white); border-radius: var(--r-lg);
+      border: 1px solid var(--border); padding: 30px 26px;
+      position: relative; overflow: hidden; cursor: default;
+      transition: all .3s;
+    }
+    .sem-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--gold); transform: scaleX(0) ; transition: transform .3s;
+    }
+    .sem-card:hover { transform: translateY(-6px); box-shadow: var(--sh-lg); }
+    .sem-card:hover::before { transform: scaleX(1); }
+
+    .sem-card-emoji {
+      font-size: 32px; margin-bottom: 16px;
+      width: 60px; height: 60px; border-radius: 14px;
+      background: var(--cream); display: grid; place-items: center;
+      transition: background .3s;
+    }
+    .sem-card:hover .sem-card-emoji { background: var(--gold-pale); }
+
+    .sem-card-title {
+      font-size: 15px; font-weight: 500; color: var(--navy);
+      margin-bottom: 10px; line-height: 1.45;
+    }
+    .sem-card-text { font-size: 13px; color: var(--gray); line-height: 1.85; margin-bottom: 18px; }
+    .sem-card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .sem-tag {
+      display: inline-block; padding: 3px 10px; border-radius: 20px;
+      font-size: 11px; background: var(--cream-deep); color: var(--gray-dark);
+    }
+
+    /* ═══════════════════════════════════
+       COMMUNITY — MMS
+    ═══════════════════════════════════ */
+    .mms {
+      padding: clamp(80px, 10vw, 130px) 0;
+      background: var(--navy); position: relative; overflow: hidden;
+    }
+    .mms::before {
+      content: '';
+      position: absolute; top: -200px; right: -200px;
+      width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,148,58,.1) 0%, transparent 65%);
+    }
+    .mms::after {
+      content: '';
+      position: absolute; bottom: -150px; left: -150px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(42,122,120,.12) 0%, transparent 65%);
+    }
+    .mms-dots {
+      position: absolute; top: 40px; left: 50%;
+      width: 180px; height: 140px;
+      background-image: radial-gradient(circle, rgba(255,255,255,.08) 1.5px, transparent 1.5px);
+      background-size: 20px 20px; pointer-events: none;
+    }
+
+    .mms-inner {
+      display: grid; grid-template-columns: 1.2fr 1fr;
+      gap: clamp(48px, 7vw, 100px); align-items: center;
+      position: relative; z-index: 1;
+    }
+
+    .mms-eyebrow { color: var(--gold-light); }
+    .mms-eyebrow::before, .mms-eyebrow::after { background: var(--gold-light); }
+
+    .mms-title {
+      font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 700; color: var(--white); line-height: 1.4; margin-bottom: 20px;
+    }
+    .mms-name {
+      display: inline; color: var(--gold-light);
+    }
+    .mms-lead { font-size: 14px; color: rgba(255,255,255,.65); line-height: 2.1; margin-bottom: 36px; }
+
+    .mms-features { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .mms-feat {
+      display: flex; gap: 14px; align-items: flex-start;
+    }
+    .mms-feat-icon {
+      width: 38px; height: 38px; flex-shrink: 0; border-radius: 10px;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      display: grid; place-items: center; font-size: 18px;
+    }
+    .mms-feat-body {}
+    .mms-feat-title { font-size: 14px; font-weight: 500; color: var(--white); margin-bottom: 3px; }
+    .mms-feat-text { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.7; }
+
+    .mms-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .mms-note { font-size: 11px; color: rgba(255,255,255,.35); margin-top: 14px; }
+
+    /* MMS Visual */
+    .mms-visual {}
+    .mms-card-main {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--r-xl); padding: 32px 28px;
+      backdrop-filter: blur(8px);
+    }
+    .mms-card-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+    }
+    .mms-badge {
+      background: var(--gold); border-radius: 8px;
+      padding: 6px 14px; font-size: 12px; font-weight: 700; color: var(--white);
+      letter-spacing: .06em;
+    }
+    .mms-badge-sub { font-size: 12px; color: rgba(255,255,255,.4); }
+
+    .mms-items { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+    .mms-item {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,.04); border-radius: 12px; padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,.07);
+    }
+    .mms-item-icon { font-size: 20px; flex-shrink: 0; }
+    .mms-item-title { font-size: 13px; color: rgba(255,255,255,.8); font-weight: 500; }
+    .mms-item-sub { font-size: 11px; color: rgba(255,255,255,.35); margin-top: 2px; }
+
+    .mms-members {
+      display: flex; align-items: center; gap: 12px;
+      padding-top: 20px; border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .mms-avatars { display: flex; }
+    .mms-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      border: 2px solid var(--navy); font-size: 18px;
+      display: grid; place-items: center; margin-left: -10px;
+      background: var(--navy-mid);
+    }
+    .mms-avatar:first-child { margin-left: 0; }
+    .mms-members-text { font-size: 12px; color: rgba(255,255,255,.5); }
+    .mms-members-text strong { color: var(--gold-light); }
+
+    /* ═══════════════════════════════════
+       TEAM
+    ═══════════════════════════════════ */
+    .team {
+      padding: clamp(80px, 10vw, 130px) 0;
+      background: var(--white);
+    }
+    .team-head { text-align: center; margin-bottom: 60px; }
+    .team-head .eyebrow { justify-content: center; }
+
+    .team-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px;
+      max-width: 860px; margin: 0 auto;
+    }
+    .team-card {
+      border: 1px solid var(--border); border-radius: var(--r-xl);
+      padding: 40px 36px; transition: all .3s; position: relative; overflow: hidden;
+    }
+    .team-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+      transform: scaleX(0); transition: transform .3s;
+    }
+    .team-card:hover { transform: translateY(-4px); box-shadow: var(--sh-lg); }
+    .team-card:hover::before { transform: scaleX(1); }
+
+    .team-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      margin-bottom: 20px; border: 2px solid var(--border);
+      overflow: hidden; flex-shrink: 0;
+    }
+    .team-avatar img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      display: block;
+    }
+
+    .team-role {
+      display: inline-block; font-size: 11px; font-weight: 500;
+      color: var(--gold-dark); letter-spacing: .1em;
+      background: var(--gold-pale); border-radius: 20px; padding: 4px 12px;
+      margin-bottom: 12px;
+    }
+    .team-name {
+      font-family: var(--font-serif); font-size: 20px; font-weight: 700;
+      color: var(--navy); margin-bottom: 4px;
+    }
+    .team-name-en { font-size: 12px; color: var(--gray-light); letter-spacing: .08em; margin-bottom: 16px; }
+    .team-bio { font-size: 13px; color: var(--gray); line-height: 1.9; }
+    .team-links { display: flex; gap: 10px; margin-top: 20px; }
+    .team-link {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--cream); border: 1px solid var(--border);
+      display: grid; place-items: center; font-size: 14px;
+      transition: all .2s; color: var(--gray-dark);
+    }
+    .team-link:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+
+    /* ═══════════════════════════════════
+       TESTIMONIALS
+    ═══════════════════════════════════ */
+    .voice {
+      padding: clamp(80px, 10vw, 130px) 0;
+      background: var(--cream);
+    }
+    .voice-head { text-align: center; margin-bottom: 56px; }
+    .voice-head .eyebrow { justify-content: center; }
+
+    .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+    .voice-card {
+      background: var(--white); border-radius: var(--r-lg);
+      border: 1px solid var(--border); padding: 28px 24px;
+      transition: box-shadow .3s;
+    }
+    .voice-card:hover { box-shadow: var(--sh-md); }
+
+    .voice-stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .voice-stars span { color: var(--gold); font-size: 15px; }
+
+    .voice-text {
+      font-size: 13px; color: var(--gray); line-height: 2;
+      margin-bottom: 22px;
+      padding-left: 14px; border-left: 3px solid var(--gold-pale);
+    }
+
+    .voice-author { display: flex; align-items: center; gap: 12px; }
+    .voice-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: grid; place-items: center; font-size: 20px; flex-shrink: 0;
+    }
+    .va1 { background: #fde8cc; } .va2 { background: #cce0f5; } .va3 { background: #ccf0e8; }
+    .voice-name { font-size: 13px; font-weight: 500; color: var(--navy); }
+    .voice-role { font-size: 11px; color: var(--gray-light); margin-top: 2px; }
+
+    /* ═══════════════════════════════════
+       CTA SECTION
+    ═══════════════════════════════════ */
+    .cta-section {
+      padding: clamp(60px, 8vw, 100px) 0;
+      background: var(--white);
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: var(--r-xl);
+      padding: clamp(56px, 7vw, 90px) clamp(40px, 6vw, 100px);
+      display: grid; grid-template-columns: 1fr auto;
+      align-items: center; gap: 48px;
+      position: relative; overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute; top: -100px; right: 200px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,148,58,.15) 0%, transparent 65%);
+    }
+    .cta-box-dots {
+      position: absolute; bottom: 20px; right: 50px;
+      width: 100px; height: 80px;
+      background-image: radial-gradient(circle, rgba(255,255,255,.1) 1.5px, transparent 1.5px);
+      background-size: 16px 16px;
+    }
+
+    .cta-body { position: relative; z-index: 1; }
+    .cta-eyebrow { font-size: 11px; letter-spacing: .18em; color: var(--gold-light); margin-bottom: 14px; }
+    .cta-title {
+      font-family: var(--font-serif); font-size: clamp(22px, 3vw, 34px);
+      font-weight: 700; color: var(--white); line-height: 1.5; margin-bottom: 12px;
+    }
+    .cta-text { font-size: 13px; color: rgba(255,255,255,.6); line-height: 2; }
+    .cta-actions { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 12px; align-items: center; }
+    .cta-sub { font-size: 11px; color: rgba(255,255,255,.35); }
+
+    /* ═══════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════ */
+    footer {
+      background: #111a2a;
+      color: rgba(255,255,255,.6);
+    }
+    .footer-main {
+      display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: 60px; padding: clamp(60px, 8vw, 100px) 0 56px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+
+    .f-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .f-logo-mark {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      display: grid; place-items: center;
+    }
+    .f-logo-name {
+      font-family: var(--font-serif); font-size: 18px; font-weight: 700;
+      color: var(--white); letter-spacing: .06em;
+    }
+
+    .f-tagline { font-size: 13px; line-height: 1.9; color: rgba(255,255,255,.4); margin-bottom: 28px; }
+    .f-mission {
+      display: inline-block; font-size: 12px; font-weight: 500;
+      color: var(--gold-light); letter-spacing: .08em;
+      border: 1px solid rgba(200,176,96,.3); border-radius: 20px; padding: 6px 16px;
+      margin-bottom: 28px;
+    }
+
+    .f-socials { display: flex; gap: 10px; }
+    .f-social {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      display: grid; place-items: center; font-size: 15px;
+      cursor: pointer; transition: all .2s; color: rgba(255,255,255,.5);
+      text-decoration: none;
+    }
+    .f-social:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+
+    .f-col-title {
+      font-size: 12px; font-weight: 500; color: var(--white);
+      letter-spacing: .1em; margin-bottom: 20px;
+    }
+    .f-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .f-links a {
+      font-size: 13px; color: rgba(255,255,255,.4); transition: color .2s;
+    }
+    .f-links a:hover { color: var(--gold-light); }
+
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 0; font-size: 12px; color: rgba(255,255,255,.25);
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    /* ═══════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════ */
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { order: -1; }
+      .hero-card-stack { max-width: 360px; margin: 0 auto; }
+      .hero-card-bg { aspect-ratio: 3/3.2; }
+      .pill-1 { top: 0; left: 0; font-size: 11px; }
+      .pill-2 { right: 0; }
+      .pill-3 { bottom: 0; left: 0; }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-big-stats { grid-template-columns: repeat(2, 1fr); }
+      .seminars-head { grid-template-columns: 1fr; }
+      .seminars-grid { grid-template-columns: 1fr 1fr; }
+      .mms-inner { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; max-width: 460px; }
+      .voice-grid { grid-template-columns: 1fr; }
+      .cta-box { grid-template-columns: 1fr; }
+      .cta-actions { flex-direction: row; }
+      .footer-main { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .seminars-grid { grid-template-columns: 1fr; }
+      .footer-main { grid-template-columns: 1fr; }
+      .hero-stats { gap: 20px; }
+      .about-big-stats { grid-template-columns: 1fr 1fr; }
+      .trust-bar-inner { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <div class="logo-mark"><span>🌟</span></div>
+      <div>
+        <div class="logo-name">MIRAICHI</div>
+        <div class="logo-tagline">AI LEARNING COMMUNITY</div>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#about">MIRAICHIとは</a></li>
+      <li><a href="#seminars">セミナー</a></li>
+      <li><a href="#mms">コミュニティ</a></li>
+      <li><a href="#team">メンバー</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="https://peatix.com/group/16331864" target="_blank" class="btn btn-gold" style="padding:10px 22px;font-size:13px;">
+        セミナーに申し込む →
+      </a>
+    </div>
+  </nav>
+</header>
+
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="container">
+    <div class="hero-inner">
+
+      <!-- Text -->
+      <div>
+        <div class="hero-kicker">
+          <div class="hero-kicker-icon">✨</div>
+          <span>AIで人生を、もっと面白く</span>
+          <div class="hero-kicker-dot"></div>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="accent">学び</span>が生きがいに、<br>
+          <span class="line2"><span class="accent">成長</span>が未来になる</span>
+        </h1>
+
+        <div class="hero-mission">
+          " 仕事と人生を、AIでもっと面白くする "
+        </div>
+
+        <p class="hero-lead">
+          MIRAICHIは、生成AIに挑戦するすべての人を<br>
+          応援する実践型の学びコミュニティです。<br>
+          知識だけでなく、行動と仲間があなたを変える。
+        </p>
+
+        <div class="hero-actions">
+          <a href="https://peatix.com/group/16331864" target="_blank" class="btn btn-gold">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4"/>
+            </svg>
+            セミナーに参加する（Peatix）
+          </a>
+          <a href="#mms" class="btn btn-outline">MMSコミュニティを見る</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-num">100<sup>本+</sup></div>
+            <div class="hero-stat-label">年間セミナー数</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">12,000<sup>人+</sup></div>
+            <div class="hero-stat-label">累計参加者</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">167<sup>本</sup></div>
+            <div class="hero-stat-label">アーカイブ記事</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual card -->
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+
+          <div class="hero-pill pill-1">
+            <span class="hero-pill-icon">🤖</span>
+            生成AI活用セミナー 開催中
+          </div>
+          <div class="hero-pill pill-2">
+            <span class="hero-pill-icon">🎯</span>
+            初心者〜中級者向け
+          </div>
+          <div class="hero-pill pill-3">
+            <span class="hero-pill-icon">📅</span>
+            3日に1本のペースで開催
+          </div>
+
+          <div class="hero-card-bg">
+            <div class="hc-inner">
+
+              <div class="hc-logo">
+                <div class="hc-logo-text">MIRAICHI</div>
+                <div class="hc-logo-sub">AI LEARNING COMMUNITY</div>
+              </div>
+
+              <div class="hc-main">
+                <div class="hc-stat-card">
+                  <div class="hc-stat-label">累計参加者数</div>
+                  <div class="hc-stat-val">12,000<span>人以上</span></div>
+                  <div class="hc-stat-bar">
+                    <div class="hc-stat-fill" style="width:85%"></div>
+                  </div>
+                </div>
+
+                <div style="padding:16px 0 8px;">
+                  <div class="hc-stat-label" style="margin-bottom:10px;">開催セミナーカテゴリ</div>
+                  <div class="hc-tags">
+                    <span class="hc-tag gold">🤖 AIツール</span>
+                    <span class="hc-tag teal">🎨 クリエイティブ</span>
+                    <span class="hc-tag white">⚡ 業務自動化</span>
+                    <span class="hc-tag white">💻 プログラミング</span>
+                    <span class="hc-tag gold">📊 データ活用</span>
+                  </div>
+                </div>
+
+                <div class="hc-stat-card" style="flex:1;">
+                  <div class="hc-stat-label">年間開催数</div>
+                  <div class="hc-stat-val">100<span>本以上</span></div>
+                  <div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:6px;">※ 3日に1本のペースで開催</div>
+                </div>
+              </div>
+
+              <a href="https://peatix.com/group/16331864" target="_blank" class="hc-cta" style="margin-top:20px;">
+                <span class="hc-cta-text">Peatixでセミナーを見る</span>
+                <div class="hc-cta-arrow">→</div>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ TRUST BAR ═══════════════ -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-bar-inner">
+      <span class="trust-bar-label">掲載・活動プラットフォーム</span>
+      <div class="trust-platform">
+        <div class="trust-platform-icon" style="background:#e8e8ff;">🎫</div>
+        Peatix
+      </div>
+      <div class="trust-platform">
+        <div class="trust-platform-icon" style="background:#e8f4e8;">📝</div>
+        note
+      </div>
+      <div class="trust-platform">
+        <div class="trust-platform-icon" style="background:#e8e8e8;">𝕏</div>
+        X（Twitter）
+      </div>
+      <div class="trust-platform">
+        <div class="trust-platform-icon" style="background:#e8f0f8;">🎙️</div>
+        Spotify Podcast
+      </div>
+      <div class="trust-platform">
+        <div class="trust-platform-icon" style="background:#f4ece8;">🌐</div>
+        MMS会員サイト
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+
+      <!-- Left -->
+      <div>
+        <div class="eyebrow left-line">What is MIRAICHI</div>
+        <h2 class="section-title">
+          AIを学ぶだけじゃない。<br>
+          <span style="color:var(--gold);">AIで人生を変える</span>場所。
+        </h2>
+        <p class="about-copy">
+          MIRAICHIは「仕事と人生をAIでもっと面白くする」を
+          テーマにした、実践型AIコミュニティです。<br><br>
+          「見る・聞く」だけの学びから卒業して、
+          実際に手を動かし、仲間と一緒に挑戦する。
+          そんな環境を、私たちは大切にしています。<br><br>
+          初心者でも大丈夫。失敗を恐れず挑戦できる
+          心理的安全性のある場づくりが、MIRAICHIの核心です。
+        </p>
+
+        <div class="about-values">
+          <div class="about-val">
+            <div class="about-val-icon">🚀</div>
+            <div class="about-val-body">
+              <div class="about-val-title">実践重視の「手を動かす」学び</div>
+              <div class="about-val-text">知識のインプットより、実際に作って動かすアウトプットを重視。セミナーはすべてハンズオン形式が基本です。</div>
+            </div>
+          </div>
+          <div class="about-val">
+            <div class="about-val-icon">🤝</div>
+            <div class="about-val-body">
+              <div class="about-val-title">心理的安全性のあるコミュニティ</div>
+              <div class="about-val-text">初心者でも「わからない」と言える温かい雰囲気。失敗を糧に成長できる、安心の学びの場です。</div>
+            </div>
+          </div>
+          <div class="about-val">
+            <div class="about-val-icon">💡</div>
+            <div class="about-val-body">
+              <div class="about-val-title">仕事にも人生にも直結するAI活用</div>
+              <div class="about-val-text">業務効率化だけでなく、自己実現・生きがい・新しい可能性の発見まで。AIを「人生の道具」として使いこなします。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-cta">
+          <a href="https://peatix.com/group/16331864" target="_blank" class="btn btn-gold">まずはセミナーに参加する →</a>
+        </div>
+      </div>
+
+      <!-- Right: Stats -->
+      <div class="about-visual">
+        <div class="about-big-stats">
+          <div class="abs-card dark">
+            <div class="abs-num">100<span>本+</span></div>
+            <div class="abs-label">年間セミナー開催数<br>（3日に1本ペース）</div>
+          </div>
+          <div class="abs-card gold-card">
+            <div class="abs-num">12,000<span>人+</span></div>
+            <div class="abs-label">累計セミナー参加者数</div>
+          </div>
+          <div class="abs-card">
+            <div class="abs-num">167<span>本</span></div>
+            <div class="abs-label">note公開記事・<br>アーカイブ数</div>
+          </div>
+          <div class="abs-card">
+            <div class="abs-num">2<span>名</span></div>
+            <div class="abs-label">共同代表が<br>チームで運営</div>
+          </div>
+          <div class="abs-card span2" style="background:var(--cream-deep);">
+            <div style="font-size:13px;color:var(--gray);margin-bottom:10px;">掲げるビジョン</div>
+            <div style="font-family:var(--font-serif);font-size:clamp(16px,2vw,22px);font-weight:700;color:var(--navy);line-height:1.6;">
+              "学びが生きがいに、成長が未来に"
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ SEMINARS ═══════════════ -->
+<section class="seminars" id="seminars">
+  <div class="container">
+    <div class="seminars-head">
+      <div>
+        <div class="eyebrow left-line">Seminars</div>
+        <h2 class="section-title">
+          多彩なAIセミナーを<br>年間100本以上開催
+        </h2>
+      </div>
+      <div>
+        <p class="section-lead">
+          AIツールの最前線から、クリエイティブ活用、
+          業務自動化、プログラミング入門まで。
+          あなたのレベルと目的に合ったセミナーが必ず見つかります。
+        </p>
+        <div style="margin-top:20px;">
+          <a href="https://peatix.com/group/16331864" target="_blank" class="btn btn-outline-gold">
+            すべてのセミナーを見る（Peatix）→
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="seminars-grid">
+
+      <div class="sem-card">
+        <div class="sem-card-emoji">🤖</div>
+        <div class="sem-card-title">最新AIツール活用</div>
+        <p class="sem-card-text">Claude Code、Manus、MCP、Dify、Replit Agentなど。常に最新のAIツールをいち早くキャッチし、実践的な使い方をお届けします。</p>
+        <div class="sem-card-tags">
+          <span class="sem-tag">Claude Code</span>
+          <span class="sem-tag">Manus</span>
+          <span class="sem-tag">MCP</span>
+          <span class="sem-tag">Dify</span>
+        </div>
+      </div>
+
+      <div class="sem-card">
+        <div class="sem-card-emoji">🎨</div>
+        <div class="sem-card-title">クリエイティブAI</div>
+        <p class="sem-card-text">画像・動画・音声の一括生成、デザインツールとの連携。AIで表現の可能性を広げ、クリエイティブな成果物を作り出します。</p>
+        <div class="sem-card-tags">
+          <span class="sem-tag">画像生成</span>
+          <span class="sem-tag">動画AI</span>
+          <span class="sem-tag">Lovart</span>
+        </div>
+      </div>
+
+      <div class="sem-card">
+        <div class="sem-card-emoji">⚡</div>
+        <div class="sem-card-title">業務自動化・GAS連携</div>
+        <p class="sem-card-text">Google Apps ScriptとAIを組み合わせた業務自動化。X自動投稿、QRコード受付、問い合わせシステムなど実務直結の内容です。</p>
+        <div class="sem-card-tags">
+          <span class="sem-tag">GAS</span>
+          <span class="sem-tag">自動化</span>
+          <span class="sem-tag">X連携</span>
+        </div>
+      </div>
+
+      <div class="sem-card">
+        <div class="sem-card-emoji">💻</div>
+        <div class="sem-card-title">プログラミング入門</div>
+        <p class="sem-card-text">HTML/CSS、Git/GitHub、Docker、AWSなど。非エンジニアでも「対話で学ぼう」シリーズで、楽しくコードに親しめます。</p>
+        <div class="sem-card-tags">
+          <span class="sem-tag">HTML/CSS</span>
+          <span class="sem-tag">Git</span>
+          <span class="sem-tag">AWS</span>
+        </div>
+      </div>
+
+      <div class="sem-card">
+        <div class="sem-card-emoji">📱</div>
+        <div class="sem-card-title">SNS・発信戦略</div>
+        <p class="sem-card-text">AIを使ったSNS発信で自己実現。苦手を補い、強みを活かしたコンテンツ制作で、あなたらしい発信スタイルを確立します。</p>
+        <div class="sem-card-tags">
+          <span class="sem-tag">SNS活用</span>
+          <span class="sem-tag">コンテンツ制作</span>
+          <span class="sem-tag">自己実現</span>
+        </div>
+      </div>
+
+      <div class="sem-card">
+        <div class="sem-card-emoji">🌐</div>
+        <div class="sem-card-title">Webアプリ開発</div>
+        <p class="sem-card-text">v0、Create.xyz、Replit Agentなどを使ったノーコード〜ローコードのWebアプリ開発。アイデアをすぐに形にする力を身につけます。</p>
+        <div class="sem-card-tags">
+          <span class="sem-tag">v0</span>
+          <span class="sem-tag">Replit</span>
+          <span class="sem-tag">iOS開発</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ MMS COMMUNITY ═══════════════ -->
+<section class="mms" id="mms">
+  <div class="mms-dots"></div>
+  <div class="container">
+    <div class="mms-inner">
+
+      <!-- Left -->
+      <div>
+        <div class="eyebrow mms-eyebrow">Community</div>
+        <h2 class="mms-title">
+          <span class="mms-name">MIRAICHI Moon Shot</span>（MMS）<br>
+          一人で学ぶより、<br>仲間と挑戦する。
+        </h2>
+        <p class="mms-lead">
+          MIRAICHIのコア実践コミュニティ「MMS」。
+          仲間を「Crew（クルー）」と呼び、
+          ともに学び、挑戦し、成長する場所です。
+          朝活ブートキャンプから最新AIのワークショップまで、
+          毎日の行動が積み重なって人生が変わっていきます。
+        </p>
+
+        <div class="mms-features">
+          <div class="mms-feat">
+            <div class="mms-feat-icon">🌅</div>
+            <div class="mms-feat-body">
+              <div class="mms-feat-title">朝活ブートキャンプ</div>
+              <div class="mms-feat-text">ゼロ秒思考・タイピング練習・瞑想。AIビジネス基礎体力を毎朝コツコツ積み上げます。</div>
+            </div>
+          </div>
+          <div class="mms-feat">
+            <div class="mms-feat-icon">🎓</div>
+            <div class="mms-feat-body">
+              <div class="mms-feat-title">ワークショップ・セミナー参加権</div>
+              <div class="mms-feat-text">メンバー限定のアーカイブ配信や特別ワークショップに参加できます。</div>
+            </div>
+          </div>
+          <div class="mms-feat">
+            <div class="mms-feat-icon">👥</div>
+            <div class="mms-feat-body">
+              <div class="mms-feat-title">仲間と挑戦できる環境</div>
+              <div class="mms-feat-text">同じ志を持つClawメンバーと繋がり、刺激し合い、一緒に成長できるコミュニティです。</div>
+            </div>
+          </div>
+          <div class="mms-feat">
+            <div class="mms-feat-icon">📦</div>
+            <div class="mms-feat-body">
+              <div class="mms-feat-title">アーカイブ・コンテンツ</div>
+              <div class="mms-feat-text">過去のセミナー録画や教材をいつでも振り返れます。自分のペースで学習できます。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mms-actions">
+          <a href="https://miraichi.memberpay.jp/" target="_blank" class="btn btn-gold">
+            MMSコミュニティに参加する →
+          </a>
+          <a href="https://peatix.com/group/16331864" target="_blank" class="btn btn-ghost">
+            まずはセミナーを試す
+          </a>
+        </div>
+        <div class="mms-note">※ MMS入会はPeatixメッセージ等でご案内しています</div>
+      </div>
+
+      <!-- Right: Card -->
+      <div class="mms-visual">
+        <div class="mms-card-main">
+          <div class="mms-card-header">
+            <div class="mms-badge">MMS</div>
+            <div class="mms-badge-sub">MIRAICHI Moon Shot</div>
+          </div>
+
+          <div class="mms-items">
+            <div class="mms-item">
+              <div class="mms-item-icon">🌅</div>
+              <div>
+                <div class="mms-item-title">朝活ブートキャンプ</div>
+                <div class="mms-item-sub">毎朝の習慣で基礎体力を強化</div>
+              </div>
+            </div>
+            <div class="mms-item">
+              <div class="mms-item-icon">🎓</div>
+              <div>
+                <div class="mms-item-title">セミナー参加 & アーカイブ</div>
+                <div class="mms-item-sub">最新AIセミナーに優先参加</div>
+              </div>
+            </div>
+            <div class="mms-item">
+              <div class="mms-item-icon">🤝</div>
+              <div>
+                <div class="mms-item-title">Crew（クルー）コミュニティ</div>
+                <div class="mms-item-sub">仲間と学び、挑戦し合う</div>
+              </div>
+            </div>
+            <div class="mms-item">
+              <div class="mms-item-icon">📚</div>
+              <div>
+                <div class="mms-item-title">限定コンテンツ・教材</div>
+                <div class="mms-item-sub">メンバー専用コンテンツを提供</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mms-members">
+            <div class="mms-avatars">
+              <div class="mms-avatar">👩‍💼</div>
+              <div class="mms-avatar">🧑‍💻</div>
+              <div class="mms-avatar">👨‍🎨</div>
+              <div class="mms-avatar">👩‍🔬</div>
+              <div class="mms-avatar" style="background:rgba(200,148,58,.3);font-size:12px;color:rgba(255,255,255,.6);">+</div>
+            </div>
+            <div class="mms-members-text">
+              <strong>60名以上</strong>のCrewが在籍中
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ TEAM ═══════════════ -->
+<section class="team" id="team">
+  <div class="container">
+    <div class="team-head">
+      <div class="eyebrow">Team</div>
+      <h2 class="section-title" style="margin-top:6px;">MIRAICHIを支えるメンバー</h2>
+      <p class="section-lead" style="max-width:480px;margin:14px auto 0;">
+        異なるバックグラウンドを持つ2人の共同代表が、<br>
+        それぞれの強みを掛け合わせてMIRAICHIを運営しています。
+      </p>
+    </div>
+
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <img src="images/今野 純子.png" alt="みらい（今野純子）">
+        </div>
+        <div class="team-role">Co-Founder / Community Lead</div>
+        <div class="team-name">みらい（今野 純子）</div>
+        <div class="team-name-en">Junko Konno / @mirai_spark</div>
+        <p class="team-bio">
+          大手生命保険会社で24年間、人材育成・組織マネジメントに従事。
+          AIハッカソンでグランプリ（優勝）を獲得したことを機に独立し、MIRAICHIを共同設立。<br><br>
+          温かいコミュニティ設計と「人が育つ場づくり」が専門。
+          Spotifyポッドキャスト「miraiの仕事と人生を、AIでもっと面白くする話」を配信中。
+        </p>
+        <div class="team-links">
+          <a href="https://x.com/mirai_spark" target="_blank" class="team-link">𝕏</a>
+          <a href="https://note.com/miraichi_ai" target="_blank" class="team-link">📝</a>
+          <a href="https://creators.spotify.com/pod/profile/mirai0715" target="_blank" class="team-link">🎙️</a>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar">
+          <img src="images/村岡大地.png" alt="村岡大地">
+        </div>
+        <div class="team-role">Co-Founder / AI Tech Lead</div>
+        <div class="team-name">村岡 大地</div>
+        <div class="team-name-en">Daichi Muraoka</div>
+        <p class="team-bio">
+          500人規模のAIイベントへの登壇経験を持つAI戦略エキスパート。
+          AWSデプロイ・Git/GitHub・Claude Codeなど技術系セミナーを担当。<br><br>
+          最新のAI・エンジニアリングの実践知識を、
+          わかりやすく噛み砕いて伝えることを得意とする。
+          MIRAICHIの技術面・セミナー企画を牽引。
+        </p>
+        <div class="team-links">
+          <a href="https://note.com/miraichi_ai" target="_blank" class="team-link">📝</a>
+          <a href="https://peatix.com/group/16331864" target="_blank" class="team-link">🎫</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ VOICE ═══════════════ -->
+<section class="voice">
+  <div class="container">
+    <div class="voice-head">
+      <div class="eyebrow">Voice</div>
+      <h2 class="section-title" style="margin-top:6px;">参加者の声</h2>
+    </div>
+
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="voice-text">
+          「AIに興味はあったけど何から始めればいいかわからなかった。MIRAICHIのセミナーで実際に手を動かしてみて、初めて『使える』感覚がつかめました」
+        </p>
+        <div class="voice-author">
+          <div class="voice-avatar va1">👩‍💼</div>
+          <div>
+            <div class="voice-name">30代・会社員（マーケティング職）</div>
+            <div class="voice-role">AIツール活用セミナー参加</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="voice-card">
+        <div class="voice-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="voice-text">
+          「3日に1本という頻度で最新AIが学べる場所はなかなかない。毎回内容が濃くて、参加するたびに『こんな使い方があったのか！』という発見があります」
+        </p>
+        <div class="voice-author">
+          <div class="voice-avatar va2">🧑‍💻</div>
+          <div>
+            <div class="voice-name">40代・フリーランス</div>
+            <div class="voice-role">GAS業務自動化セミナー参加</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="voice-card">
+        <div class="voice-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="voice-text">
+          「MMSコミュニティに入ってから、朝活の習慣ができました。同じ目標を持つ仲間がいることで、一人では続かなかったことが続けられています」
+        </p>
+        <div class="voice-author">
+          <div class="voice-avatar va3">👩‍🎨</div>
+          <div>
+            <div class="voice-name">20代・デザイナー</div>
+            <div class="voice-role">MMS Crew メンバー</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <div class="cta-box-dots"></div>
+
+      <div class="cta-body">
+        <div class="cta-eyebrow">JOIN MIRAICHI</div>
+        <h2 class="cta-title">
+          さあ、AIと一緒に<br>
+          新しい自分に挑戦しよう。
+        </h2>
+        <p class="cta-text">
+          MIRAICHIのセミナーは、初心者大歓迎。<br>
+          Peatixからすぐに申し込めます。<br>
+          まずは一歩、踏み出してみてください。
+        </p>
+      </div>
+
+      <div class="cta-actions">
+        <a href="https://peatix.com/group/16331864" target="_blank" class="btn btn-white" style="padding:16px 36px;font-size:14px;">
+          🎫 Peatixでセミナーを探す
+        </a>
+        <a href="https://miraichi.memberpay.jp/" target="_blank" class="btn btn-ghost" style="font-size:13px;">
+          MMSコミュニティに入る
+        </a>
+        <div class="cta-sub">※ まずはセミナー参加から。費用はイベントごとに異なります。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-main">
+
+      <div>
+        <div class="f-logo">
+          <div class="f-logo-mark"><span style="font-size:18px;">🌟</span></div>
+          <div class="f-logo-name">MIRAICHI</div>
+        </div>
+        <div class="f-mission">" 学びが生きがいに、成長が未来に "</div>
+        <p class="f-tagline">
+          生成AIを活用して<br>
+          仕事と人生をもっと面白くする、<br>
+          実践型AIコミュニティ。
+        </p>
+        <div class="f-socials">
+          <a href="https://peatix.com/group/16331864" target="_blank" class="f-social" title="Peatix">🎫</a>
+          <a href="https://note.com/miraichi_ai" target="_blank" class="f-social" title="note">📝</a>
+          <a href="https://x.com/mirai_spark" target="_blank" class="f-social" title="X">𝕏</a>
+          <a href="https://creators.spotify.com/pod/profile/mirai0715" target="_blank" class="f-social" title="Podcast">🎙️</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="f-col-title">セミナー</div>
+        <ul class="f-links">
+          <li><a href="https://peatix.com/group/16331864" target="_blank">開催中のセミナー</a></li>
+          <li><a href="#">AIツール活用</a></li>
+          <li><a href="#">クリエイティブAI</a></li>
+          <li><a href="#">業務自動化・GAS</a></li>
+          <li><a href="#">プログラミング入門</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="f-col-title">コミュニティ</div>
+        <ul class="f-links">
+          <li><a href="https://miraichi.memberpay.jp/" target="_blank">MMS に参加する</a></li>
+          <li><a href="#">朝活ブートキャンプ</a></li>
+          <li><a href="#">Crew（会員）について</a></li>
+          <li><a href="https://note.com/miraichi_ai" target="_blank">アーカイブ・note</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="f-col-title">メディア</div>
+        <ul class="f-links">
+          <li><a href="https://note.com/miraichi_ai" target="_blank">note 公式</a></li>
+          <li><a href="https://x.com/mirai_spark" target="_blank">X（@mirai_spark）</a></li>
+          <li><a href="https://creators.spotify.com/pod/profile/mirai0715" target="_blank">Spotify Podcast</a></li>
+          <li><a href="https://peatix.com/group/16331864" target="_blank">Peatix グループ</a></li>
+        </ul>
+        <div style="margin-top:24px;">
+          <a href="https://peatix.com/group/16331864" target="_blank" class="btn btn-gold" style="font-size:12px;padding:11px 22px;">
+            セミナーを見る →
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 MIRAICHI. All rights reserved.</span>
+      <span>運営: みらい（今野純子）・村岡大地</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
